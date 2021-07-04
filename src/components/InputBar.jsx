@@ -3,7 +3,8 @@ import {
   Input, 
   Segment, 
   Select,
-  Button
+  Button,
+  Header
 } from 'semantic-ui-react'
 
 const inputConfig = [
@@ -40,17 +41,15 @@ class InputBar extends React.Component {
     url : ""
   }
 
-
   onInputChange = (e) => {
-    console.log(e.target.value);
     this.setState({url: e.target.value });
   }
-
 
   render(){
     return (
       <div className="input-bar">
         <Segment color='orange'>
+          <Header as='h2'>Postman Clone</Header>
           <Input
             fluid
             placeholder='https://mysite.com'>
