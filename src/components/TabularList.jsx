@@ -1,15 +1,15 @@
 import React from 'react';
 import { Tab } from 'semantic-ui-react';
-import AddKeyValue from './panes/AddKeyValue';
+import KeyValuePane from './panes/KeyValuePane';
 
 const panes = [
   {
     menuItem: 'Query Params',
-    render: () => <AddKeyValue/>
+    render: () => <KeyValuePane/>
   },
   { 
     menuItem: 'Headers', 
-    render: () => <AddKeyValue/> 
+    render: () => <KeyValuePane/>
   },
   { 
     menuItem: 'JSON', 
