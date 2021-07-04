@@ -36,6 +36,17 @@ const inputConfig = [
 
 class InputBar extends React.Component {
 
+  state = {
+    url : ""
+  }
+
+
+  onInputChange = (e) => {
+    console.log(e.target.value);
+    this.setState({url: e.target.value });
+  }
+
+
   render(){
     return (
       <div className="input-bar">
@@ -44,7 +55,10 @@ class InputBar extends React.Component {
             fluid
             placeholder='https://mysite.com'>
             <Select defaultValue='GET' options={inputConfig} />
-            <input />            
+            <input 
+              value={this.state.url} 
+              onChange={this.onInputChange}
+            />            
             <Button>Send</Button>
           </Input>
         </Segment>
