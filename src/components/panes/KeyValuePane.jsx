@@ -41,6 +41,8 @@ class KeyValuePane extends React.Component {
 
     this.setState({
       keyValues: newKeyValues
+    }, ()=> {
+      console.log(this.state)
     });
   }
 

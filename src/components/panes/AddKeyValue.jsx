@@ -17,9 +17,9 @@ class AddKeyValue extends React.Component {
     this.setState({
       id: this.props.keyPair.id,  
       [e.target.name] : e.target.value
+    }, ()=> {
+      this.props.onKeyPairUpdate(this.state);
     });
-
-    this.props.onKeyPairUpdate(this.state);
   }
 
   render(){
@@ -53,8 +53,6 @@ class AddKeyValue extends React.Component {
       </div>
     );
   }
- 
-  
 }
 
 export default AddKeyValue;
