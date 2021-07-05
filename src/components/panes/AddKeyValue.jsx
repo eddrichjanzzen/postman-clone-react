@@ -5,17 +5,27 @@ import {
   Grid
 } from 'semantic-ui-react';
 
+const initialState = {
+  id: 0,
+  keyItem: '',
+  valueItem: ''
+}
+
 class AddKeyValue extends React.Component {
   
   state = {
-    id: 0,
-    keyItem: '',
-    valueItem: ''
+    ...initialState
   }
+
+  componentDidMount(){
+    this.setState({
+      id: this.props.keyPair.id
+    })
+  }
+
 
   handleOnChange = (e) => {
     this.setState({
-      id: this.props.keyPair.id,  
       [e.target.name] : e.target.value
     }, ()=> {
       this.props.onKeyPairUpdate(this.state);
@@ -25,8 +35,7 @@ class AddKeyValue extends React.Component {
   handleOnClick = () => {
     const keyPair = this.props.keyPair
     this.props.onKeyPairRemove(keyPair);
-  } 
-
+  }
 
   render(){
     return (
@@ -52,7 +61,7 @@ class AddKeyValue extends React.Component {
   
             <Grid.Column width={2}>
               <Button
-                onClick={(e)=> this.handleOnClick(e)}
+                onClick={()=> this.handleOnClick}
                 >Remove
               </Button>
             </Grid.Column>
