@@ -61,7 +61,7 @@ class AddKeyValue extends React.Component {
   
             <Grid.Column width={2}>
               <Button
-                onClick={()=> this.handleOnClick}
+                onClick={()=> this.handleOnClick()}
                 >Remove
               </Button>
             </Grid.Column>
