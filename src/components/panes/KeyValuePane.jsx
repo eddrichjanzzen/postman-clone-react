@@ -24,6 +24,20 @@ class KeyValuePane extends React.Component {
     })
   }
 
+  onKeyPairRemove = (keyPair) => {
+    
+    let newKeyValues = [...this.state.keyValues];
+
+    // render a new list removing based on the index
+    newKeyValues = newKeyValues.filter(x => x.id !== keyPair.id);
+
+    this.setState({
+      keyValues: newKeyValues
+    }, () => {
+      console.log(this.state)
+    });
+  }
+
   onKeyPairUpdate = (keyPair) => {
     // Reference:
     // https://javascript.plainenglish.io/react-updating-a-value-in-state-array-7bae7c7eaef9
@@ -48,11 +62,12 @@ class KeyValuePane extends React.Component {
 
   render(){
 
-    const renderedList = this.state.keyValues.map((keyPair, index) => {
+    const renderedList = this.state.keyValues.map((keyPair) => {
       return <AddKeyValue
-          key={index}
+          key={keyPair.id}
           keyPair={keyPair} 
-          onKeyPairUpdate={this.onKeyPairUpdate} />
+          onKeyPairUpdate={this.onKeyPairUpdate}
+          onKeyPairRemove={this.onKeyPairRemove} />
       });
 
     return (

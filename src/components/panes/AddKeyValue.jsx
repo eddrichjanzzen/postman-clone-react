@@ -22,6 +22,12 @@ class AddKeyValue extends React.Component {
     });
   }
 
+  handleOnClick = () => {
+    const keyPair = this.props.keyPair
+    this.props.onKeyPairRemove(keyPair);
+  } 
+
+
   render(){
     return (
       <div className="add-key-value">
@@ -45,7 +51,10 @@ class AddKeyValue extends React.Component {
             </Grid.Column>
   
             <Grid.Column width={2}>
-              <Button >Remove</Button>
+              <Button
+                onClick={(e)=> this.handleOnClick(e)}
+                >Remove
+              </Button>
             </Grid.Column>
   
           </Grid.Row>
