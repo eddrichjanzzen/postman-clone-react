@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { 
   Input, 
   Button,
@@ -11,66 +11,59 @@ const initialState = {
   valueItem: ''
 }
 
-class AddKeyValue extends React.Component {
+const AddKeyValue = ({ keyPair, onKeyPairUpdate, onKeyPairRemove }) => {
+
+  const [keyValue, setKeyValue ] = useState(initialState);
   
-  state = {
-    ...initialState
-  }
+  useEffect(()=> {
+    
+    onKeyPairUpdate(keyValue);
 
-  componentDidMount(){
-    this.setState({
-      id: this.props.keyPair.id
-    })
-  }
+  }, [keyValue])
 
 
-  handleOnChange = (e) => {
-    this.setState({
+  const handleOnChange = (e) => {
+    setKeyValue({
       [e.target.name] : e.target.value
-    }, ()=> {
-      this.props.onKeyPairUpdate(this.state);
     });
   }
 
-  handleOnClick = () => {
-    const keyPair = this.props.keyPair
-    this.props.onKeyPairRemove(keyPair);
+  const handleOnClick = () => {
+    onKeyPairRemove(keyPair);
   }
 
-  render(){
-    return (
-      <div className="add-key-value">
-        <Grid divided='vertically'>
-          <Grid.Row columns={3}>
-  
-            <Grid.Column width={7}>
-              <Input 
-                fluid 
-                placeholder='Key'
-                name='keyItem'
-                onChange={(e) => this.handleOnChange(e)}/>
-            </Grid.Column>
-  
-            <Grid.Column width={7}>
-              <Input 
-                fluid 
-                placeholder='Value'
-                name='valueItem'
-                onChange={(e) => this.handleOnChange(e)}/>
-            </Grid.Column>
-  
-            <Grid.Column width={2}>
-              <Button
-                onClick={()=> this.handleOnClick()}
-                >Remove
-              </Button>
-            </Grid.Column>
-  
-          </Grid.Row>
-        </Grid>
-      </div>
-    );
-  }
+  return (
+    <div className="add-key-value">
+      <Grid divided='vertically'>
+        <Grid.Row columns={3}>
+
+          <Grid.Column width={7}>
+            <Input 
+              fluid 
+              placeholder='Key'
+              name='keyItem'
+              onChange={(e) => handleOnChange(e)}/>
+          </Grid.Column>
+
+          <Grid.Column width={7}>
+            <Input 
+              fluid 
+              placeholder='Value'
+              name='valueItem'
+              onChange={(e) => handleOnChange(e)}/>
+          </Grid.Column>
+
+          <Grid.Column width={2}>
+            <Button
+              onClick={()=> handleOnClick()}
+              >Remove
+            </Button>
+          </Grid.Column>
+
+        </Grid.Row>
+      </Grid>
+    </div>
+  );
 }
 
 export default AddKeyValue;

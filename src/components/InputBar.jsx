@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { 
   Input, 
   Segment, 
@@ -35,36 +35,29 @@ const inputConfig = [
     }
   ] 
 
-class InputBar extends React.Component {
 
-  state = {
-    url : ""
-  }
+const InputBar = () => {
 
-  onInputChange = (e) => {
-    this.setState({url: e.target.value });
-  }
+  const [url, setUrl ] = useState('')
 
-  render(){
-    return (
-      <div className="input-bar">
-        <Segment color='orange'>
-          <Header as='h2'>Postman Clone</Header>
-          <Input
-            fluid
-            placeholder='https://mysite.com'>
-            <Select defaultValue='GET' options={inputConfig} />
-            <input 
-              value={this.state.url} 
-              onChange={this.onInputChange}
-            />            
-            <Button>Send</Button>
-          </Input>
-        </Segment>
-      </div>
-    )
-  }
-}
+  return (
+    <div className="input-bar">
+      <Segment color='orange'>
+        <Header as='h2'>Postman Clone</Header>
+        <Input
+          fluid
+          placeholder='https://mysite.com'>
+          <Select defaultValue='GET' options={inputConfig} />
+          <input 
+            value={url} 
+            onChange={(e) => setUrl(e.target.value)}
+          />            
+          <Button>Send</Button>
+        </Input>
+      </Segment>
+    </div>
+  )
+};
 
 export default InputBar;
 

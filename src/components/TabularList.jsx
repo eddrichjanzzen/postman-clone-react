@@ -1,46 +1,43 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Tab } from 'semantic-ui-react';
 import KeyValuePane from './panes/KeyValuePane';
 
-class TabularList extends React.Component {
 
-  state = {
-    queryParams: [
-      {
-        id: 0,
-        keyItem : '',
-        valueItem : ''
-      }
-    ],
-    headers: [
-      {
-        id: 0,
-        keyItem : '',
-        valueItem : ''
-      }
-    ]
-  }
+const TabularList = () => {
+  
+  const tabListInitState = [
+    {
+      id: 0,
+      keyItem : '',
+      valueItem : ''
+    }
+  ] 
+
+  const [queryParams, setQueryParams] = useState(tabListInitState);
+  const [headers, setHeaders] = useState(tabListInitState);
 
   // configuration for panes
-  panes = [
+  const panes = [
     {
       menuItem: 'Query Params',
       render: () => <KeyValuePane
+                      key='queryParams'
                       tabName='queryParams'
-                      keyValueList={this.state.queryParams}
-                      onKeyPairAdd={this.onKeyPairAdd}
-                      onKeyPairUpdate={this.onKeyPairUpdate}
-                      onKeyPairRemove={this.onKeyPairRemove}
+                      keyValueList={queryParams}
+                      onKeyPairAdd={onKeyPairAdd}
+                      onKeyPairUpdate={onKeyPairUpdate}
+                      onKeyPairRemove={onKeyPairRemove}
                     />
     },
     {
       menuItem: 'Headers',
       render: () => <KeyValuePane
+                      key='headers'
                       tabName='headers'
-                      keyValueList={this.state.headers}
-                      onKeyPairAdd={this.onKeyPairAdd}
-                      onKeyPairUpdate={this.onKeyPairUpdate}
-                      onKeyPairRemove={this.onKeyPairRemove}
+                      keyValueList={headers}
+                      onKeyPairAdd={onKeyPairAdd}
+                      onKeyPairUpdate={onKeyPairUpdate}
+                      onKeyPairRemove={onKeyPairRemove}
                     />
     },
     { 
@@ -49,69 +46,86 @@ class TabularList extends React.Component {
     }
   ]
 
-  onKeyPairAdd = (tabName) => {
-    this.setState({
-      ...this.state[tabName].push({
-        id: this.state[tabName].length,
+
+  const onKeyPairAdd = (tabName) => {
+
+
+    if(tabName === 'headers'){
+      setHeaders(headers => [...headers, {
+        id: headers.length,
         keyItem: '',
         valueItem: ''
-      })
-    }, () => {
-      console.log(this.state);
-    })
+      }])
+    }
+
+    if(tabName === 'queryParams'){
+      setQueryParams(queryParams => [...queryParams, {
+        id: queryParams.length,
+        keyItem: '',
+        valueItem: ''
+      }])
+    }
   }
 
-  onKeyPairRemove = (tabName, keyPair) => {
-    
-    let newKeyValues = [...this.state[tabName]];
+  const onKeyPairRemove = (tabName, keyPair) => {
 
-    // render a new list removing based on the index
-    newKeyValues = newKeyValues.filter(x => x.id !== keyPair.id);
+    if(tabName === 'headers'){
+      let newKeyValues = [...headers];
+      newKeyValues = newKeyValues.filter(x => x.id !== keyPair.id);
+      setHeaders(newKeyValues);
+    }
 
-    this.setState({
-      [tabName] : newKeyValues
-    }, () => {
-      console.log(this.state)
-    });
+    if(tabName === 'queryParams'){
+      let newKeyValues = [...queryParams];
+      newKeyValues = newKeyValues.filter(x => x.id !== keyPair.id);
+      setQueryParams(newKeyValues);
+    }
+
+
   }
 
-  onKeyPairUpdate = (tabName, keyPair) => {
+  const onKeyPairUpdate = (tabName, keyPair) => {
     // Reference:
     // https://javascript.plainenglish.io/react-updating-a-value-in-state-array-7bae7c7eaef9
 
     // first look for the elements index
-    const elementIndex = this.state[tabName].findIndex(element => element.id === keyPair.id);
-    
-    let newKeyValues = [...this.state[tabName]];
 
-    newKeyValues[elementIndex] = {
-      ...newKeyValues[elementIndex], 
-      keyItem: keyPair.keyItem,
-      valueItem: keyPair.valueItem
+    if(tabName === 'headers'){
+      const elementIndex = headers.findIndex(element => element.id === keyPair.id);
+      let newKeyValues = [...headers];
+      
+      newKeyValues[elementIndex] = {
+        ...newKeyValues[elementIndex], 
+        keyItem: keyPair.keyItem,
+        valueItem: keyPair.valueItem
+      };
+      
+      setHeaders(newKeyValues);
     }
 
-    this.setState({
-      [tabName]: newKeyValues
-    }, () => {
-      console.log(this.state)
-    });
+
+    if(tabName === 'queryParams'){
+      const elementIndex = queryParams.findIndex(element => element.id === keyPair.id);
+      let newKeyValues = [...queryParams];
+      
+      newKeyValues[elementIndex] = {
+        ...newKeyValues[elementIndex], 
+        keyItem: keyPair.keyItem,
+        valueItem: keyPair.valueItem
+      };
+      
+      setQueryParams(newKeyValues);
+    }
   }
 
-  onTabChange = () => {
-    console.log('tab changed 1')
-  }
+  return (
+    <div className="tabular-list">
+      <Tab 
+        panes={panes}
+      />
+    </div>
+  );
 
-  render(){
-    return (
-      <div className="tabular-list">
-        <Tab 
-          panes={this.panes}
-          onTabChange={this.onTabChange}
-        />
-      </div>
-    );
-  }
-
-}
+};
 
 export default TabularList;
