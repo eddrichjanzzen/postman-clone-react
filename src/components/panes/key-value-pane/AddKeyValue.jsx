@@ -5,7 +5,7 @@ import {
   Grid
 } from 'semantic-ui-react';
 
-import useStateCallback from '../../utilities/useStateCallback';
+import useStateCallback from './../../../utilities/useStateCallback';
 
 const initialState = {
   id: 0,
