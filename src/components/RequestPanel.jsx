@@ -3,7 +3,7 @@ import {
   Container, Grid
 } from 'semantic-ui-react';
 import InputBar from './InputBar';
-import RequestTabs from './RequestTabs';
+import RequestTabGroup from './RequestTabGroup';
 
 
 const styles = {
@@ -20,7 +20,7 @@ const RequestPanel = () => {
         <Grid>
           <Grid.Row columns={1}>
             <Grid.Column width={16}>
-              <RequestTabs/>
+              <RequestTabGroup/>
             </Grid.Column>
           </Grid.Row>
         </Grid>

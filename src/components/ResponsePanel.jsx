@@ -1,7 +1,7 @@
 import React from 'react';
 import { Container, Grid } from 'semantic-ui-react';
 
-import ResponseTabs from './ResponseTabs';
+import ResponseTabGroup from './ResponseTabGroup';
 
 const styles = {
   'padding': '2em'
@@ -27,7 +27,7 @@ const ResponsePanel = () => {
 
           <Grid.Row columns={1}>
             <Grid.Column width={16}>
-              <ResponseTabs/>
+              <ResponseTabGroup/>
             </Grid.Column>
           </Grid.Row>
         </Grid>
