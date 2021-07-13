@@ -1,19 +1,14 @@
 import React from 'react';
-import InputBar from './components/InputBar';
-import TabularList from './components/TabularList';
-import { 
-  Container
-} from 'semantic-ui-react';
+import RequestPanel from './components/RequestPanel';
+import ResponsePanel from './components/ResponsePanel';
 
 class App extends React.Component {
   
   render() {
     return (
       <div className="app">
-        <Container>
-          <InputBar/>
-          <TabularList/>
-        </Container>
+        <RequestPanel/>
+        <ResponsePanel/>
       </div>
     )
   }
