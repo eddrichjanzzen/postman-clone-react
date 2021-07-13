@@ -4,7 +4,6 @@ import {
   Segment, 
   Select,
   Button,
-  Header
 } from 'semantic-ui-react'
 
 const inputConfig = [
@@ -43,7 +42,6 @@ const InputBar = () => {
   return (
     <div className="input-bar">
       <Segment color='orange'>
-        <Header as='h2'>Postman Clone</Header>
         <Input
           fluid
           placeholder='https://mysite.com'>
