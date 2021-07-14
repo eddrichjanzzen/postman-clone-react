@@ -31,14 +31,14 @@ const CodeMirrorEditorPane = ({ initialCode, setEditorView }) => {
       parent: editorRef.current
     })
     
-    setEditorView(view.state.doc);
+    setEditorView(view);
 
     return () => {
       view.destroy();
       setEditorView(null);
     }
 
-  }, [editorRef, initialCode, setEditorView])
+  }, [editorRef, initialCode])
 
   return (
     <div ref={editorRef}></div>

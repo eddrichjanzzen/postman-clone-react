@@ -1,24 +1,27 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Tab } from 'semantic-ui-react';
 import CodeMirrorEditorPane from './panes/editor/CodeMirrorEditorPane';
 import KeyValuePane from './panes/key-value-pane/KeyValuePane';
 
-const RequestTabGroup = () => {
+const RequestTabGroup = ({ editorView, setEditorView, queryParams, setQueryParams, headers, setHeaders }) => {
   
-  const [editorView, setEditorView] = useState(null);
-
   // configuration for panes
   const panes = [
     {
       menuItem: 'Query Params',
       pane: <Tab.Pane key="query-params">
-              <KeyValuePane/>
+              <KeyValuePane
+                keyPairs={queryParams}
+                setKeyPairs={setQueryParams}
+                />
             </Tab.Pane>  
     },
     {
       menuItem: 'Headers',
       pane: <Tab.Pane key="headers">
-              <KeyValuePane/>
+              <KeyValuePane
+                keyPairs={headers}
+                setKeyPairs={setHeaders}/>
             </Tab.Pane>  
     },
     { 
