@@ -9,7 +9,7 @@ import 'semantic-ui-css/semantic.min.css';
 
 import axios from 'axios';
 
-const updateEndtime = (response) => {
+const updateEndTime = (response) => {
   response.customData = response.customData || {};
   response.customData.time = new Date().getTime() - response.config.customData.startTime;
   return response;
@@ -18,15 +18,14 @@ const updateEndtime = (response) => {
 // request interceptor
 axios.interceptors.request.use(request => {
   request.customData = request.customData || {};
-  request.customData.startTime = new Date.getTime();
+  request.customData.startTime = new Date().getTime();
   return request;
 });
 
 // response interceptor
-axios.interceptors.response.use(updateEndtime, e => {
-  return Promise.reject(updateEndtime(e.response));
+axios.interceptors.response.use(updateEndTime, e => {
+  return Promise.reject(updateEndTime(e.response));
 })
-
 
 
 ReactDOM.render(<App/>, document.querySelector('#root'));
