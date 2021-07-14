@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { 
   Input, 
   Segment, 
@@ -35,9 +35,7 @@ const inputConfig = [
   ] 
 
 
-const InputBar = () => {
-
-  const [url, setUrl ] = useState('')
+const InputBar = ({ url, setUrl, httpMethod, setHttpMethod, onInputSend }) => {
 
   return (
     <div className="input-bar">
@@ -45,12 +43,15 @@ const InputBar = () => {
         <Input
           fluid
           placeholder='https://mysite.com'>
-          <Select defaultValue='GET' options={inputConfig} />
+          <Select 
+            defaultValue={httpMethod} 
+            options={inputConfig}
+            onChange={(_e, data)=> setHttpMethod(data.value)} />
           <input 
             value={url} 
             onChange={(e) => setUrl(e.target.value)}
           />            
-          <Button>Send</Button>
+          <Button onClick={(e)=> onInputSend()}>Send</Button>
         </Input>
       </Segment>
     </div>
