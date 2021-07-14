@@ -1,17 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 import RequestPanel from './components/RequestPanel';
 import ResponsePanel from './components/ResponsePanel';
 
-class App extends React.Component {
+const App = () => {
+
+  const [ response, setResponse ] = useState(null);
+
+  const showResponse = (
+    response ? <ResponsePanel response={response}/> : null)
+  ;
+
+  return (
+    <div className="app">
+      <RequestPanel setResponse={setResponse}/>
+      {showResponse}
+    </div>
+  )
   
-  render() {
-    return (
-      <div className="app">
-        <RequestPanel/>
-        <ResponsePanel/>
-      </div>
-    )
-  }
 }
 
 export default App;
