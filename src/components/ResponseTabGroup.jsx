@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 import { Tab } from 'semantic-ui-react';
 import CodeMirrorEditorPane from './panes/editor/CodeMirrorEditorPane';
+import ResponseHeaders from './panes/response-headers/ResponseHeadersPane';
 
-const ResponseTabGroup = () => {
-
-  const [editorView, setEditorView] = useState(null);
+const ResponseTabGroup = ({ setEditorView }) => {
 
   // configuration for panes
   const panes = [
@@ -18,7 +17,9 @@ const ResponseTabGroup = () => {
     },
     {
       menuItem: 'Response Headers',
-      pane: <Tab.Pane key="response-headers">Response Headers</Tab.Pane>  
+      pane: <Tab.Pane key="response-headers">
+              <ResponseHeaders/>
+            </Tab.Pane>  
     }
   ]
 
