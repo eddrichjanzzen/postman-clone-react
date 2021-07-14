@@ -1,19 +1,9 @@
-import React, { useState, useCallback } from 'react';
+import React from 'react';
 import AddKeyValue from './AddKeyValue';
 import { Button } from 'semantic-ui-react';
 import { v4 as uuidv4 } from 'uuid';
 
-const KeyValuePane = () => {
-
-  const keyPairInitState = [
-    {
-      id: uuidv4(),
-      keyItem : '',
-      valueItem : ''
-    }
-  ] 
-
-  const [keyPairs, setKeyPairs ] = useState(keyPairInitState);
+const KeyValuePane = ({ keyPairs, setKeyPairs }) => {
 
   const onKeyPairAdd = () => {
     setKeyPairs(keyPairs => [...keyPairs, {
@@ -29,7 +19,7 @@ const KeyValuePane = () => {
     setKeyPairs(newKeyValues);
   }
 
-  const onKeyPairUpdate = useCallback((keyPair) => {
+  const onKeyPairUpdate = (keyPair) => {
     // Reference:
     // https://javascript.plainenglish.io/react-updating-a-value-in-state-array-7bae7c7eaef9
 
@@ -45,14 +35,14 @@ const KeyValuePane = () => {
     };
     
     setKeyPairs(newKeyValues);
-  }, [keyPairs])
+  };
 
 
   const renderedList = keyPairs.map((keyPair) => {
     return <AddKeyValue
         key={keyPair.id}
         keyPair={keyPair}
-        onKeyPairUpdate={(kpValue) => onKeyPairUpdate(kpValue)}
+        setKeyPair={(kpValue) => onKeyPairUpdate(kpValue)}
         onKeyPairRemove={() => onKeyPairRemove(keyPair)} />
     });
 

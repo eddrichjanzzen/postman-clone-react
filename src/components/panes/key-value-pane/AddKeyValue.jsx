@@ -1,33 +1,32 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { 
   Input, 
   Button,
   Grid
 } from 'semantic-ui-react';
 
-import useStateCallback from './../../../utilities/useStateCallback';
+const AddKeyValue = ({ keyPair, setKeyPair, onKeyPairRemove }) => {
+  //https://stackoverflow.com/questions/63710791/react-hooks-handle-multiple-inputs
 
-const initialState = {
-  id: 0,
-  keyItem: '',
-  valueItem: ''
-}
+  const [keyValue, setKeyValue] = useState(keyPair);
 
-const AddKeyValue = ({ keyPair, onKeyPairUpdate, onKeyPairRemove }) => {
-  //https://stackoverflow.com/questions/54954091/how-to-use-callback-with-usestate-hook-in-react
+  useEffect(()=> {
+    
+    // research why this warning happens and if it has an impact to the application
+    setKeyPair(keyValue);
 
-  const [keyValue, setKeyValue ] = useStateCallback(initialState);
+  }, [keyValue])
 
   const handleOnChange = (e) => {
-    
-    setKeyValue({
-      id: keyPair.id,
+    // define a state variable to keep track of the key and value together
+    //https://stackoverflow.com/questions/63710791/react-hooks-handle-multiple-inputs
+    setKeyValue((prevState) => ({
+      ...prevState,
+      id: keyValue.id,
       [e.target.name] : e.target.value
-    }, ()=> {
-      // update the keypair value, after the state was updated
-      onKeyPairUpdate(keyValue);
-    });
+    }))
   }
+
 
   return (
     <div className="add-key-value">
@@ -39,7 +38,6 @@ const AddKeyValue = ({ keyPair, onKeyPairUpdate, onKeyPairRemove }) => {
               fluid 
               placeholder='Key'
               name='keyItem'
-              value={keyValue.keyItem}
               onChange={(e) => handleOnChange(e)}/>
           </Grid.Column>
 
@@ -48,7 +46,6 @@ const AddKeyValue = ({ keyPair, onKeyPairUpdate, onKeyPairRemove }) => {
               fluid 
               placeholder='Value'
               name='valueItem'
-              value={keyValue.valueItem}
               onChange={(e) => handleOnChange(e)}/>
           </Grid.Column>
 
