@@ -3,7 +3,7 @@ import { Tab } from 'semantic-ui-react';
 import CodeMirrorEditorPane from './panes/editor/CodeMirrorEditorPane';
 import KeyValuePane from './panes/key-value-pane/KeyValuePane';
 
-const RequestTabGroup = ({ editorView, setEditorView, queryParams, setQueryParams, headers, setHeaders }) => {
+const RequestTabGroup = ({ setEditorView, queryParams, setQueryParams, headers, setHeaders }) => {
   
   // configuration for panes
   const panes = [
