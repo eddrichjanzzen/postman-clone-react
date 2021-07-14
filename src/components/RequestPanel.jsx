@@ -5,6 +5,9 @@ import {
 import InputBar from './InputBar';
 import RequestTabGroup from './RequestTabGroup';
 import { v4 as uuidv4 } from 'uuid';
+import axios from 'axios';
+import { convertKeyValueToObject } from './../utilities/helpers';
+
 
 const styles = {
   'padding': '2em'
@@ -18,7 +21,7 @@ const keyPairInitState = [
   }
 ] 
 
-const RequestPanel = () => {
+const RequestPanel = ({ setResponse }) => {
 
   const [url, setUrl] = useState('https://jsonplaceholder.typicode.com/todos/1');
   const [httpMethod, setHttpMethod] = useState('GET');
@@ -28,14 +31,39 @@ const RequestPanel = () => {
   const [headers, setHeaders ] = useState(keyPairInitState);
   
 
-  const handleOnInputSend = () => {
+  const handleOnInputSend = async () => {
+
+    const requestBody = editorView.state.doc.toString();
     console.log('url ', url);
     console.log('http method', httpMethod);
     console.log('headers', headers);
     console.log('query params ', queryParams)
-    console.log('body ', editorView.state.doc.toString());
-  }
+    console.log('body ', );
 
+    let data;
+    try {
+      data = JSON.parse(requestBody);
+    } catch (e) {
+      alert('Something is wrong with the JSON data.')
+    }
+
+    try {
+      const response = await axios({
+        url: url,
+        method: httpMethod,
+        params: convertKeyValueToObject(queryParams),
+        headers: convertKeyValueToObject(headers),
+        data
+      });
+
+      console.log(response);
+      setResponse(response);
+
+    } catch (e) {
+      return e;
+    }
+
+  }
 
   return (
     <div style={styles}>
