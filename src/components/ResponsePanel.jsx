@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Container, Grid } from 'semantic-ui-react';
 import ResponseTabGroup from './ResponseTabGroup';
 import prettyBytes from 'pretty-bytes';
@@ -7,10 +7,18 @@ const styles = {
   'padding': '2em'
 }
 
-
 const ResponsePanel = ({ response }) => {
 
-  const [editorView, setEditorView] = useState(null);
+  const [ doc, setDoc ] = useState('{}');
+
+  useEffect(() => {
+    if(response === null) return;
+    const jsonResponse = JSON.stringify(response.data, null, 2);
+
+    setDoc(jsonResponse);
+
+  }, [response])
+
 
   const status = response.status;
   const time = response.customData.time;
@@ -26,20 +34,21 @@ const ResponsePanel = ({ response }) => {
         <Grid>
           <Grid.Row>
             <Grid.Column>
-              <div>Status: {status}</div>
+              <div>Status: {status ? status: ''}</div>
             </Grid.Column>
             <Grid.Column>
-              <div>Time: {time}</div>
+              <div>Time: {time ? time: ''}</div>
             </Grid.Column>
             <Grid.Column>
-              <div>Size: {size}</div>
+              <div>Size: {size ? size : ''}</div>
             </Grid.Column>
           </Grid.Row>
 
           <Grid.Row columns={1}>
             <Grid.Column width={16}>
               <ResponseTabGroup
-                setEditorView={setEditorView}/>
+                doc={doc}
+                setDoc={setDoc}/>
             </Grid.Column>
           </Grid.Row>
         </Grid>
