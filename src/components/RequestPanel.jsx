@@ -23,22 +23,25 @@ const keyPairInitState = [
 
 const RequestPanel = ({ setResponse }) => {
 
-  const [url, setUrl] = useState('https://jsonplaceholder.typicode.com/todos/1');
-  const [httpMethod, setHttpMethod] = useState('GET');
+  const [ url, setUrl ] = useState('https://jsonplaceholder.typicode.com/todos/1');
+  const [ httpMethod, setHttpMethod ] = useState('GET');
   
-  const [editorView, setEditorView] = useState(null);
-  const [queryParams, setQueryParams ] = useState(keyPairInitState);
-  const [headers, setHeaders ] = useState(keyPairInitState);
+  // const [ view, setView ] = useState(null);
+  const [ doc, setDoc ] = useState('{\n\t\n}')
+
+  const [ queryParams, setQueryParams ] = useState(keyPairInitState);
+  const [ headers, setHeaders ] = useState(keyPairInitState);
   
 
   const handleOnInputSend = async () => {
 
-    const requestBody = editorView.state.doc.toString();
+    // const requestBody = view.state.doc.toString();
+    const requestBody = doc.toString();
     console.log('url ', url);
     console.log('http method', httpMethod);
     console.log('headers', headers);
     console.log('query params ', queryParams)
-    console.log('body ', );
+    console.log('body ', requestBody);
 
     let data;
     try {
@@ -79,7 +82,8 @@ const RequestPanel = ({ setResponse }) => {
           <Grid.Row columns={1}>
             <Grid.Column width={16}>
               <RequestTabGroup
-                setEditorView={setEditorView}
+                doc={'{\n\t\n}'}
+                setDoc={setDoc}
                 queryParams={queryParams}
                 setQueryParams={setQueryParams}
                 headers={headers}
