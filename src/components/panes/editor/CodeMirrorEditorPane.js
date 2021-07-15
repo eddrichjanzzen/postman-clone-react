@@ -8,42 +8,43 @@ const basicExtensions = [
   basicSetup,
   keymap.of([defaultTabBinding]),
   json(),
-  EditorState.tabSize.of(2),
-  EditorView.contentAttributes.of({contenteditable: false}),
-  EditorView.editable.of(false)
+  EditorState.tabSize.of(2)
 ]
 
-const CodeMirrorEditorPane = ({ initialCode, setEditorView }) => {
+const CodeMirrorEditorPane = ({ doc, setDoc }) => {
 
   const editorRef = useRef();
 
   useEffect(() => {  
-
     if(editorRef.current === null) return;
-  
+    
     const state = EditorState.create({
-      doc: initialCode,
-      extensions: basicExtensions
+      doc: doc,
+      extensions: [
+        ...basicExtensions,
+        EditorView.updateListener.of((view) => {
+          if (view.docChanged) {
+            setDoc(view.state.doc);
+          }
+        })
+      ]
     });
 
     const view = new EditorView({
       state,
       parent: editorRef.current
-    })
-    
-    setEditorView(view);
+    });
 
     return () => {
       view.destroy();
-      setEditorView(null);
     }
 
-  }, [editorRef, initialCode])
+  }, [editorRef.current])
+
 
   return (
     <div ref={editorRef}></div>
   )
-
 }
 
 export default CodeMirrorEditorPane;
