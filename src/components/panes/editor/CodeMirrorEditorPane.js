@@ -39,7 +39,7 @@ const CodeMirrorEditorPane = ({ doc, setDoc }) => {
       view.destroy();
     }
 
-  }, [editorRef.current])
+  }, [editorRef.current, doc])
 
 
   return (

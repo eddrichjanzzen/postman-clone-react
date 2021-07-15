@@ -12,9 +12,9 @@ const ResponsePanel = ({ response }) => {
   const [ doc, setDoc ] = useState('{}');
 
   useEffect(() => {
+    
     if(response === null) return;
     const jsonResponse = JSON.stringify(response.data, null, 2);
-
     setDoc(jsonResponse);
 
   }, [response])
