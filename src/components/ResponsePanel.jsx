@@ -48,7 +48,8 @@ const ResponsePanel = ({ response }) => {
             <Grid.Column width={16}>
               <ResponseTabGroup
                 doc={doc}
-                setDoc={setDoc}/>
+                setDoc={setDoc}
+                response={response}/>
             </Grid.Column>
           </Grid.Row>
         </Grid>

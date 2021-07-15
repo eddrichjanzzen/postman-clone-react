@@ -3,7 +3,7 @@ import { Tab } from 'semantic-ui-react';
 import CodeMirrorEditorPane from './panes/editor/CodeMirrorEditorPane';
 import ResponseHeaders from './panes/response-headers/ResponseHeadersPane';
 
-const ResponseTabGroup = ({ doc, setDoc }) => {
+const ResponseTabGroup = ({ doc, setDoc, response }) => {
 
   // configuration for panes
   const panes = [
@@ -18,7 +18,8 @@ const ResponseTabGroup = ({ doc, setDoc }) => {
     {
       menuItem: 'Response Headers',
       pane: <Tab.Pane key="response-headers">
-              <ResponseHeaders/>
+              <ResponseHeaders
+                response={response}/>
             </Tab.Pane>  
     }
   ]
