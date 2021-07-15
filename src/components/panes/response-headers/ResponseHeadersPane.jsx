@@ -16,10 +16,16 @@ const ResponseHeaders = ( {response }) => {
     
     return (
       <Grid.Row key={key}>
-        <Grid.Column width={2}>
+        <Grid.Column 
+          computer={2}
+          tablet={5}
+          mobile={7}>
           {key}
         </Grid.Column>
-        <Grid.Column width={2}>
+        <Grid.Column 
+          computer={3}
+          tablet={5}
+          mobile={7}>
           {value}
         </Grid.Column>
       </Grid.Row>
@@ -30,11 +36,17 @@ const ResponseHeaders = ( {response }) => {
   return (
     <Grid>
       <Grid.Row>
-        <Grid.Column width={2}>
-          <h3>key</h3>
+        <Grid.Column 
+          computer={2}
+          tablet={5}
+          mobile={7}>
+          <h3>Key</h3>
         </Grid.Column>
-        <Grid.Column width={2}>
-          <h3>value</h3>
+        <Grid.Column
+          computer={3}
+          tablet={5}
+          mobile={7}>
+          <h3>Value</h3>
         </Grid.Column>
       </Grid.Row>
       {renderedHeaders}

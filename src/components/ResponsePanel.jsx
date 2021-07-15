@@ -1,15 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Grid } from 'semantic-ui-react';
-import ResponseTabGroup from './ResponseTabGroup';
+import ResponseTabGroup from './tab-groups/ResponseTabGroup';
 import prettyBytes from 'pretty-bytes';
-
-const styles = {
-  'padding': '2em'
-}
+import ResponseMeta from './ResponseMeta';
 
 const ResponsePanel = ({ response }) => {
 
   const [ doc, setDoc ] = useState('{}');
+  const [ loading, setLoading ] = useState(false);
 
   useEffect(() => {
     
@@ -28,28 +26,24 @@ const ResponsePanel = ({ response }) => {
   );
 
   return (
-    <div style={styles}>
+    <div>
       <Container fluid>
         <h1>Response</h1>
         <Grid>
-          <Grid.Row>
-            <Grid.Column>
-              <div>Status: {status ? status: ''}</div>
-            </Grid.Column>
-            <Grid.Column>
-              <div>Time: {time ? time: ''}</div>
-            </Grid.Column>
-            <Grid.Column>
-              <div>Size: {size ? size : ''}</div>
-            </Grid.Column>
-          </Grid.Row>
+
+          <ResponseMeta
+            status={status}
+            time={time}
+            size={size}
+          />
 
           <Grid.Row columns={1}>
             <Grid.Column width={16}>
               <ResponseTabGroup
                 doc={doc}
                 setDoc={setDoc}
-                response={response}/>
+                response={response}
+                loading={loading}/>
             </Grid.Column>
           </Grid.Row>
         </Grid>

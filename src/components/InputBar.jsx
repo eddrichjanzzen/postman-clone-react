@@ -35,6 +35,7 @@ const inputConfig = [
   ] 
 
 
+
 const InputBar = ({ url, setUrl, httpMethod, setHttpMethod, onInputSend }) => {
 
   return (
@@ -43,15 +44,24 @@ const InputBar = ({ url, setUrl, httpMethod, setHttpMethod, onInputSend }) => {
         <Input
           fluid
           placeholder='https://mysite.com'>
-          <Select 
-            defaultValue={httpMethod} 
-            options={inputConfig}
-            onChange={(_e, data)=> setHttpMethod(data.value)} />
+          <div style={{
+            'paddingRight': '1em'
+          }}>
+            <Select
+              compact
+              defaultValue={httpMethod} 
+              options={inputConfig}
+              onChange={(_e, data)=> setHttpMethod(data.value)} />
+          </div>
           <input 
-            value={url} 
-            onChange={(e) => setUrl(e.target.value)}
-          />            
-          <Button onClick={(e)=> onInputSend()}>Send</Button>
+              value={url} 
+              onChange={(e) => setUrl(e.target.value)}
+            />   
+          <div style={{
+            'paddingLeft': '1em'
+          }}>
+            <Button onClick={()=> onInputSend()}>Send</Button>
+          </div>
         </Input>
       </Segment>
     </div>

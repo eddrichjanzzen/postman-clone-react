@@ -27,13 +27,16 @@ const AddKeyValue = ({ keyPair, setKeyPair, onKeyPairRemove }) => {
     }))
   }
 
-
   return (
     <div className="add-key-value">
-      <Grid divided='vertically'>
-        <Grid.Row columns={3}>
-
-          <Grid.Column width={7}>
+      <Grid 
+        divided='vertically'>
+        <Grid.Row
+          columns={3}>
+          <Grid.Column
+            computer={7}
+            tablet={6}
+            mobile={5}>
             <Input 
               fluid 
               placeholder='Key'
@@ -41,7 +44,10 @@ const AddKeyValue = ({ keyPair, setKeyPair, onKeyPairRemove }) => {
               onChange={(e) => handleOnChange(e)}/>
           </Grid.Column>
 
-          <Grid.Column width={7}>
+          <Grid.Column
+            computer={7}
+            tablet={6}
+            mobile={5}>
             <Input 
               fluid 
               placeholder='Value'
@@ -49,13 +55,16 @@ const AddKeyValue = ({ keyPair, setKeyPair, onKeyPairRemove }) => {
               onChange={(e) => handleOnChange(e)}/>
           </Grid.Column>
 
-          <Grid.Column width={2}>
+          <Grid.Column
+            computer={2}
+            tablet={4}
+            mobile={6}>
             <Button
+              fluid
               onClick={()=> onKeyPairRemove(keyPair)}
               >Remove
             </Button>
           </Grid.Column>
-
         </Grid.Row>
       </Grid>
     </div>

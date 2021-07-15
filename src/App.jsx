@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import RequestPanel from './components/RequestPanel';
 import ResponsePanel from './components/ResponsePanel';
+import './App.css';
 
 const App = () => {
 

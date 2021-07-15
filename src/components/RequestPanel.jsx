@@ -3,15 +3,10 @@ import {
   Container, Grid
 } from 'semantic-ui-react';
 import InputBar from './InputBar';
-import RequestTabGroup from './RequestTabGroup';
+import RequestTabGroup from './tab-groups/RequestTabGroup';
 import { v4 as uuidv4 } from 'uuid';
 import axios from 'axios';
 import { convertKeyValueToObject } from './../utilities/helpers';
-
-
-const styles = {
-  'padding': '2em'
-}
 
 const keyPairInitState = [
   {
@@ -69,7 +64,7 @@ const RequestPanel = ({ setResponse }) => {
   }
 
   return (
-    <div style={styles}>
+    <div>
       <Container fluid>
         <InputBar
           url={url} 
