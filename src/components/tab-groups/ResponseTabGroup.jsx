@@ -1,15 +1,17 @@
 import React from 'react';
 import { Tab } from 'semantic-ui-react';
-import CodeMirrorEditorPane from './panes/editor/CodeMirrorEditorPane';
-import ResponseHeaders from './panes/response-headers/ResponseHeadersPane';
+import CodeMirrorEditorPane from '../panes/editor/CodeMirrorEditorPane';
+import ResponseHeaders from '../panes/response-headers/ResponseHeadersPane';
 
-const ResponseTabGroup = ({ doc, setDoc, response }) => {
+const ResponseTabGroup = ({ doc, setDoc, response, loading }) => {
 
   // configuration for panes
   const panes = [
     {
       menuItem: 'Response Body',
-      pane: <Tab.Pane key="response-body">
+      pane: <Tab.Pane 
+              key="response-body"
+              loading={loading}>
               <CodeMirrorEditorPane
                 doc={doc}
                 setDoc={setDoc}/>

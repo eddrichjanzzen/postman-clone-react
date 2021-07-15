@@ -1,7 +1,7 @@
 import React from 'react';
 import { Tab } from 'semantic-ui-react';
-import CodeMirrorEditorPane from './panes/editor/CodeMirrorEditorPane';
-import KeyValuePane from './panes/key-value-pane/KeyValuePane';
+import CodeMirrorEditorPane from '../panes/editor/CodeMirrorEditorPane';
+import KeyValuePane from '../panes/key-value-pane/KeyValuePane';
 
 const RequestTabGroup = ({ doc, setDoc, queryParams, setQueryParams, headers, setHeaders }) => {
   
@@ -25,7 +25,7 @@ const RequestTabGroup = ({ doc, setDoc, queryParams, setQueryParams, headers, se
             </Tab.Pane>  
     },
     { 
-      menuItem: 'JSON Body', 
+      menuItem: 'Body', 
       pane: <Tab.Pane key="json-editor">
               <CodeMirrorEditorPane 
                 doc={doc}
