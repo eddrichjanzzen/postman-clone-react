@@ -6,7 +6,7 @@ import InputBar from '../../InputBar/InputBar';
 import RequestTabGroup from '../../tab-groups/RequestTabGroup/RequestTabGroup';
 import { v4 as uuidv4 } from 'uuid';
 import axios from 'axios';
-import { convertKeyValueToObject } from '../../../utilities/helpers';
+import { convertKeyValueToObject } from '../../../utils/helpers';
 
 const keyPairInitState = [
   {
@@ -30,7 +30,6 @@ const RequestPanel = ({ setResponse, setLoading }) => {
     setLoading(true);
     
     e.preventDefault();
-    // const requestBody = view.state.doc.toString();
     const requestBody = doc.toString();
     console.log('url ', url);
     console.log('http method', httpMethod);
@@ -55,7 +54,6 @@ const RequestPanel = ({ setResponse, setLoading }) => {
       });
 
       setResponse(response);
-      console.log('set response done')
 
     } catch (e) {
 
@@ -63,7 +61,6 @@ const RequestPanel = ({ setResponse, setLoading }) => {
  
     }
 
-    console.log('set loading done')
     setLoading(false);
 
   }
