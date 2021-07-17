@@ -9,22 +9,36 @@ const AddKeyValue = ({ keyPair, setKeyPair, onKeyPairRemove }) => {
   //https://stackoverflow.com/questions/63710791/react-hooks-handle-multiple-inputs
 
   const [keyValue, setKeyValue] = useState(keyPair);
+  const [debouncedKeyValue, setDebouncedKeyValue] = useState(keyValue);
 
   useEffect(()=> {
     
-    // research why this warning happens and if it has an impact to the application
-    setKeyPair(keyValue);
+    const timerId = setTimeout(() => {
+      setDebouncedKeyValue(keyValue);
+    }, 1000);
 
-  }, [keyValue])
+    return () => {
+      clearTimeout(timerId);
+    }
+
+  }, [keyValue]);
+
+
+  useEffect(() => {
+
+    setKeyPair(debouncedKeyValue);
+
+  }, [debouncedKeyValue])
+
 
   const handleOnChange = (e) => {
     // define a state variable to keep track of the key and value together
-    //https://stackoverflow.com/questions/63710791/react-hooks-handle-multiple-inputs
+    // https://stackoverflow.com/questions/63710791/react-hooks-handle-multiple-inputs
     setKeyValue((prevState) => ({
       ...prevState,
       id: keyValue.id,
       [e.target.name] : e.target.value
-    }))
+    }));
   }
 
   return (
