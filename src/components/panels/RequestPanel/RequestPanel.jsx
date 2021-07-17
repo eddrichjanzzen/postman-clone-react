@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 import { 
   Container, Grid
 } from 'semantic-ui-react';
-import InputBar from './InputBar';
-import RequestTabGroup from './tab-groups/RequestTabGroup';
+import InputBar from '../../InputBar/InputBar';
+import RequestTabGroup from '../../tab-groups/RequestTabGroup/RequestTabGroup';
 import { v4 as uuidv4 } from 'uuid';
 import axios from 'axios';
-import { convertKeyValueToObject } from './../utilities/helpers';
+import { convertKeyValueToObject } from '../../../utilities/helpers';
 
 const keyPairInitState = [
   {
@@ -16,20 +16,20 @@ const keyPairInitState = [
   }
 ] 
 
-const RequestPanel = ({ setResponse }) => {
+const RequestPanel = ({ setResponse, setLoading }) => {
 
   const [ url, setUrl ] = useState('https://jsonplaceholder.typicode.com/todos/1');
   const [ httpMethod, setHttpMethod ] = useState('GET');
-  
-  // const [ view, setView ] = useState(null);
+
   const [ doc, setDoc ] = useState('{\n\t\n}')
 
   const [ queryParams, setQueryParams ] = useState(keyPairInitState);
   const [ headers, setHeaders ] = useState(keyPairInitState);
   
-
-  const handleOnInputSend = async () => {
-
+  const handleOnInputSend = async (e) => {
+    setLoading(true);
+    
+    e.preventDefault();
     // const requestBody = view.state.doc.toString();
     const requestBody = doc.toString();
     console.log('url ', url);
@@ -54,12 +54,17 @@ const RequestPanel = ({ setResponse }) => {
         data
       });
 
-      console.log(response);
       setResponse(response);
+      console.log('set response done')
 
     } catch (e) {
-      return e;
+
+      setResponse(e);
+ 
     }
+
+    console.log('set loading done')
+    setLoading(false);
 
   }
 

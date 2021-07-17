@@ -1,5 +1,5 @@
 import React from 'react';
-import AddKeyValue from './AddKeyValue';
+import AddKeyValue from './AddKeyValue/AddKeyValue';
 import { Button } from 'semantic-ui-react';
 import { v4 as uuidv4 } from 'uuid';
 

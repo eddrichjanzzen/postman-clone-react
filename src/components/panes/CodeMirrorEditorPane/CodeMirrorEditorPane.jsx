@@ -3,6 +3,7 @@ import { EditorView, keymap } from '@codemirror/view';
 import { EditorState, basicSetup } from '@codemirror/basic-setup';
 import { defaultTabBinding } from '@codemirror/commands';
 import { json } from '@codemirror/lang-json';
+import './CodeMirrorEditorPane.css';
 
 const basicExtensions = [
   basicSetup,
@@ -43,7 +44,7 @@ const CodeMirrorEditorPane = ({ doc, setDoc }) => {
 
 
   return (
-    <div ref={editorRef}></div>
+    <div className="editor-pane" ref={editorRef}></div>
   )
 }
 

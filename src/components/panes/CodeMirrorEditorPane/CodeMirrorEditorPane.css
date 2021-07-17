@@ -1,0 +1,4 @@
+.editor-pane {
+  overflow: auto;
+  max-height: calc(40vh);
+}

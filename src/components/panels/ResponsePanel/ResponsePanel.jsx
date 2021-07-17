@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Grid } from 'semantic-ui-react';
-import ResponseTabGroup from './tab-groups/ResponseTabGroup';
+import ResponseTabGroup from '../../tab-groups/ResponseTabGroup/ResponseTabGroup';
 import prettyBytes from 'pretty-bytes';
-import ResponseMeta from './ResponseMeta';
+import ResponseMeta from './ResponseMeta/ResponseMeta';
 
-const ResponsePanel = ({ response }) => {
+const ResponsePanel = ({ response, loading }) => {
 
   const [ doc, setDoc ] = useState('{}');
-  const [ loading, setLoading ] = useState(false);
 
   useEffect(() => {
     
@@ -15,14 +14,15 @@ const ResponsePanel = ({ response }) => {
     const jsonResponse = JSON.stringify(response.data, null, 2);
     setDoc(jsonResponse);
 
-  }, [response])
+  }, [response. loading])
 
+  const hasResponse = response !== null;  
 
-  const status = response.status;
-  const time = response.customData.time;
+  const status = hasResponse ? response.status : 0;
+  const time = hasResponse ? response.customData.time : 0;
   const size = prettyBytes(
-    JSON.stringify(response.data).length + 
-    JSON.stringify(response.headers).length
+    (hasResponse ? JSON.stringify(response.data).length : 0) + 
+    (hasResponse ? JSON.stringify(response.headers).length : 0)
   );
 
   return (

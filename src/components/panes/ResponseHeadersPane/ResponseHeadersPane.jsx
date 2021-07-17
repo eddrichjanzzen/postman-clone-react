@@ -1,16 +1,18 @@
 import React from 'react';
 import { Grid } from 'semantic-ui-react';
 
-const ResponseHeaders = ( {response }) => {
+const ResponseHeaders = ({response }) => {
 
-  const responseHeaders = []
+  const responseHeaders = [];
 
-  Object.entries(response.headers).forEach(([key, value]) => {
-    responseHeaders.push({
-      key: key,
-      value: value
+  if(response !== null) {
+    Object.entries(response.headers).forEach(([key, value]) => {
+      responseHeaders.push({
+        key: key,
+        value: value
+      })
     })
-  })
+  }
 
   const renderedHeaders = responseHeaders.map(({key, value}) => {
     
@@ -40,19 +42,18 @@ const ResponseHeaders = ( {response }) => {
           computer={2}
           tablet={5}
           mobile={7}>
-          <h3>Key</h3>
+          <h4>Key</h4>
         </Grid.Column>
         <Grid.Column
           computer={3}
           tablet={5}
           mobile={7}>
-          <h3>Value</h3>
+          <h4>Value</h4>
         </Grid.Column>
       </Grid.Row>
       {renderedHeaders}
     </Grid>
   );
-
 };
 
 export default ResponseHeaders;
