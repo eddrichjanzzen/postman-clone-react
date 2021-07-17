@@ -6,6 +6,8 @@ import {
   Button,
 } from 'semantic-ui-react'
 
+import './InputBar.css';
+
 const inputConfig = [
     {
       key : 'get',
@@ -41,28 +43,26 @@ const InputBar = ({ url, setUrl, httpMethod, setHttpMethod, onInputSend }) => {
   return (
     <div className="input-bar">
       <Segment color='orange'>
-        <Input
-          fluid
-          placeholder='https://mysite.com'>
-          <div style={{
-            'paddingRight': '1em'
-          }}>
-            <Select
-              compact
-              defaultValue={httpMethod} 
-              options={inputConfig}
-              onChange={(_e, data)=> setHttpMethod(data.value)} />
-          </div>
-          <input 
-              value={url} 
-              onChange={(e) => setUrl(e.target.value)}
-            />   
-          <div style={{
-            'paddingLeft': '1em'
-          }}>
-            <Button onClick={()=> onInputSend()}>Send</Button>
-          </div>
-        </Input>
+        <form>
+          <Input
+            fluid
+            placeholder='https://mysite.com'>
+            <div className="selection">
+              <Select
+                compact
+                defaultValue={httpMethod} 
+                options={inputConfig}
+                onChange={(_e, data)=> setHttpMethod(data.value)} />
+            </div>
+            <input 
+                value={url} 
+                onChange={(e) => setUrl(e.target.value)}
+              />   
+            <div className="button">
+              <Button onClick={(e)=> onInputSend(e)}>Send</Button>
+            </div>
+          </Input>
+        </form>
       </Segment>
     </div>
   )
