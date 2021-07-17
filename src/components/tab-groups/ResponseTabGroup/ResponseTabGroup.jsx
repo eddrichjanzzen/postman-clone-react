@@ -1,7 +1,7 @@
 import React from 'react';
 import { Tab } from 'semantic-ui-react';
-import CodeMirrorEditorPane from '../panes/editor/CodeMirrorEditorPane';
-import ResponseHeaders from '../panes/response-headers/ResponseHeadersPane';
+import CodeMirrorEditorPane from '../../panes/CodeMirrorEditorPane/CodeMirrorEditorPane';
+import ResponseHeaders from '../../panes/ResponseHeadersPane/ResponseHeadersPane';
 
 const ResponseTabGroup = ({ doc, setDoc, response, loading }) => {
 
@@ -26,6 +26,7 @@ const ResponseTabGroup = ({ doc, setDoc, response, loading }) => {
     }
   ]
 
+  console.log('response re-render')
   return (
     <div className="response-tabs">
       <Tab 

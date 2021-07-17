@@ -1,7 +1,7 @@
 import React from 'react';
 import { Tab } from 'semantic-ui-react';
-import CodeMirrorEditorPane from '../panes/editor/CodeMirrorEditorPane';
-import KeyValuePane from '../panes/key-value-pane/KeyValuePane';
+import CodeMirrorEditorPane from '../../panes/CodeMirrorEditorPane/CodeMirrorEditorPane';
+import KeyValuePane from '../../panes/KeyValuePane/KeyValuePane';
 
 const RequestTabGroup = ({ doc, setDoc, queryParams, setQueryParams, headers, setHeaders }) => {
   
