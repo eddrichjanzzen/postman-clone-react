@@ -14,7 +14,7 @@ const ResponsePanel = ({ response, loading }) => {
     const jsonResponse = JSON.stringify(response.data, null, 2);
     setDoc(jsonResponse);
 
-  }, [response. loading])
+  }, [response, loading])
 
   const hasResponse = response !== null;  
 
