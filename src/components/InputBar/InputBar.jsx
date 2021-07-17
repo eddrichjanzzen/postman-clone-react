@@ -37,6 +37,7 @@ const inputConfig = [
   ] 
 
 
+const size = 'big';
 
 const InputBar = ({ url, setUrl, httpMethod, setHttpMethod, onInputSend }) => {
 
@@ -46,6 +47,7 @@ const InputBar = ({ url, setUrl, httpMethod, setHttpMethod, onInputSend }) => {
         <form>
           <Input
             fluid
+            size={size}
             placeholder='https://mysite.com'>
             <div className="selection">
               <Select
@@ -59,7 +61,11 @@ const InputBar = ({ url, setUrl, httpMethod, setHttpMethod, onInputSend }) => {
                 onChange={(e) => setUrl(e.target.value)}
               />   
             <div className="button">
-              <Button onClick={(e)=> onInputSend(e)}>Send</Button>
+              <Button
+                size={size} 
+                onClick={(e)=> onInputSend(e)}>
+                  Send
+              </Button>
             </div>
           </Input>
         </form>
