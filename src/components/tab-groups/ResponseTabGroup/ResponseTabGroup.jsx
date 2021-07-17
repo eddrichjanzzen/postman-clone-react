@@ -26,7 +26,6 @@ const ResponseTabGroup = ({ doc, setDoc, response, loading }) => {
     }
   ]
 
-  console.log('response re-render')
   return (
     <div className="response-tabs">
       <Tab 
