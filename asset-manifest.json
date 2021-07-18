@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/postman-clone-react/static/css/main.20691ac0.chunk.css",
+    "main.css": "/postman-clone-react/static/css/main.8bc742c0.chunk.css",
     "main.js": "/postman-clone-react/static/js/main.4b3bf94f.chunk.js",
     "main.js.map": "/postman-clone-react/static/js/main.4b3bf94f.chunk.js.map",
     "runtime-main.js": "/postman-clone-react/static/js/runtime-main.62e0a6d6.js",
@@ -10,7 +10,7 @@
     "static/js/2.94a5acca.chunk.js.map": "/postman-clone-react/static/js/2.94a5acca.chunk.js.map",
     "index.html": "/postman-clone-react/index.html",
     "static/css/2.429153b9.chunk.css.map": "/postman-clone-react/static/css/2.429153b9.chunk.css.map",
-    "static/css/main.20691ac0.chunk.css.map": "/postman-clone-react/static/css/main.20691ac0.chunk.css.map",
+    "static/css/main.8bc742c0.chunk.css.map": "/postman-clone-react/static/css/main.8bc742c0.chunk.css.map",
     "static/js/2.94a5acca.chunk.js.LICENSE.txt": "/postman-clone-react/static/js/2.94a5acca.chunk.js.LICENSE.txt",
     "static/media/semantic.min.css": "/postman-clone-react/static/media/outline-icons.ddae9b1b.woff"
   },
@@ -18,7 +18,7 @@
     "static/js/runtime-main.62e0a6d6.js",
     "static/css/2.429153b9.chunk.css",
     "static/js/2.94a5acca.chunk.js",
-    "static/css/main.20691ac0.chunk.css",
+    "static/css/main.8bc742c0.chunk.css",
     "static/js/main.4b3bf94f.chunk.js"
   ]
 }
