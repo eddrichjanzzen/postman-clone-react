@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/postman-clone-react/static/css/main.8bc742c0.chunk.css",
-    "main.js": "/postman-clone-react/static/js/main.4b3bf94f.chunk.js",
-    "main.js.map": "/postman-clone-react/static/js/main.4b3bf94f.chunk.js.map",
+    "main.js": "/postman-clone-react/static/js/main.41b64c8e.chunk.js",
+    "main.js.map": "/postman-clone-react/static/js/main.41b64c8e.chunk.js.map",
     "runtime-main.js": "/postman-clone-react/static/js/runtime-main.62e0a6d6.js",
     "runtime-main.js.map": "/postman-clone-react/static/js/runtime-main.62e0a6d6.js.map",
     "static/css/2.429153b9.chunk.css": "/postman-clone-react/static/css/2.429153b9.chunk.css",
@@ -19,6 +19,6 @@
     "static/css/2.429153b9.chunk.css",
     "static/js/2.94a5acca.chunk.js",
     "static/css/main.8bc742c0.chunk.css",
-    "static/js/main.4b3bf94f.chunk.js"
+    "static/js/main.41b64c8e.chunk.js"
   ]
 }
