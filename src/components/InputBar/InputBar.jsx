@@ -36,7 +36,7 @@ const inputConfig = [
     }
   ] 
 
-const size = 'big';
+const size = 'large';
 const color = 'orange';
 
 const InputBar = ({ url, setUrl, httpMethod, setHttpMethod, onInputSend }) => {

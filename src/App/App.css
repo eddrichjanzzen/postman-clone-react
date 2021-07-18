@@ -4,6 +4,12 @@
 
 @media only screen and (max-width: 500px) {
   .app {
+    padding: 0.5em 0 0 0;
+  }
+}
+
+@media only screen and (max-width: 550px) {
+  .app {
     padding: 1em 0 0 0;
   }
 }
