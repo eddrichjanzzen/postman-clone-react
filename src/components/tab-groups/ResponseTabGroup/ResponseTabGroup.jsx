@@ -14,7 +14,8 @@ const ResponseTabGroup = ({ doc, setDoc, response, loading }) => {
               loading={loading}>
               <CodeMirrorEditorPane
                 doc={doc}
-                setDoc={setDoc}/>
+                setDoc={setDoc}
+                isEditable={false}/>
             </Tab.Pane>  
     },
     {

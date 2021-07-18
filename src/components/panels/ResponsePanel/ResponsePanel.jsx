@@ -16,14 +16,30 @@ const ResponsePanel = ({ response, loading }) => {
 
   }, [response, loading])
 
-  const hasResponse = response !== null;  
+  const hasResponse = !(response == null);
+  
+  let time = '';
+  let status = '';
+  let size = '';
 
-  const status = hasResponse ? response.status : 0;
-  const time = hasResponse ? response.customData.time : 0;
-  const size = prettyBytes(
-    (hasResponse ? JSON.stringify(response.data).length : 0) + 
-    (hasResponse ? JSON.stringify(response.headers).length : 0)
-  );
+  if(hasResponse){
+    const hasCustomData = 'customData' in response;
+    const hasData = 'data' in response;
+    const hasHeaders = 'headers' in response;
+
+    status = hasResponse ? response.status : 0;
+
+    if(hasData && hasHeaders){
+      size = prettyBytes(
+        (hasResponse ? JSON.stringify(response.data).length : 0) + 
+        (hasResponse ? JSON.stringify(response.headers).length : 0)
+      );
+    }
+
+    if(hasCustomData){
+      time = response.customData.time
+    }
+  }
 
   return (
     <div>

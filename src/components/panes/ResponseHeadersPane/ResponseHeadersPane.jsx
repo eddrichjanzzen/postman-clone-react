@@ -5,13 +5,15 @@ const ResponseHeaders = ({response }) => {
 
   const responseHeaders = [];
 
-  if(response !== null) {
-    Object.entries(response.headers).forEach(([key, value]) => {
-      responseHeaders.push({
-        key: key,
-        value: value
+  if(!(response == null)) {
+    if('headers' in response){
+      Object.entries(response.headers).forEach(([key, value]) => {
+        responseHeaders.push({
+          key: key,
+          value: value
+        })
       })
-    })
+    }
   }
 
   const renderedHeaders = responseHeaders.map(({key, value}) => {

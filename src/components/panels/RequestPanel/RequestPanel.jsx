@@ -45,21 +45,23 @@ const RequestPanel = ({ setResponse, setLoading }) => {
     }
 
     try {
+
       const response = await axios({
         url: url,
         method: httpMethod,
         params: convertKeyValueToObject(queryParams),
         headers: convertKeyValueToObject(headers),
         data
-      });
-
+      })
+  
       setResponse(response);
 
-    } catch (e) {
+    } catch(e){
 
+      console.log(e);
       setResponse(e);
- 
     }
+
 
     setLoading(false);
 

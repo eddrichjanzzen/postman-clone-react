@@ -12,7 +12,7 @@ const basicExtensions = [
   EditorState.tabSize.of(2)
 ]
 
-const CodeMirrorEditorPane = ({ doc, setDoc }) => {
+const CodeMirrorEditorPane = ({ doc, setDoc, isEditable=true }) => {
 
   const editorRef = useRef();
 
@@ -27,7 +27,8 @@ const CodeMirrorEditorPane = ({ doc, setDoc }) => {
           if (view.docChanged) {
             setDoc(view.state.doc);
           }
-        })
+        }),
+        EditorView.editable.of(isEditable)
       ]
     });
 

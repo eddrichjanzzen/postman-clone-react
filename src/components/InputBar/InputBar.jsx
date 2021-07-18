@@ -36,8 +36,8 @@ const inputConfig = [
     }
   ] 
 
-
 const size = 'big';
+const color = 'orange';
 
 const InputBar = ({ url, setUrl, httpMethod, setHttpMethod, onInputSend }) => {
 
@@ -62,6 +62,8 @@ const InputBar = ({ url, setUrl, httpMethod, setHttpMethod, onInputSend }) => {
               />   
             <div className="button">
               <Button
+                basic
+                color={color}
                 size={size} 
                 onClick={(e)=> onInputSend(e)}>
                   Send

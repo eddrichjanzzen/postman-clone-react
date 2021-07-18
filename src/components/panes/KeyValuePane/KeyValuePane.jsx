@@ -3,6 +3,8 @@ import AddKeyValue from './AddKeyValue/AddKeyValue';
 import { Button } from 'semantic-ui-react';
 import { v4 as uuidv4 } from 'uuid';
 
+const color = 'orange';
+
 const KeyValuePane = ({ keyPairs, setKeyPairs }) => {
 
   const onKeyPairAdd = () => {
@@ -49,7 +51,10 @@ const KeyValuePane = ({ keyPairs, setKeyPairs }) => {
   return (
     <React.Fragment>
       {renderedList}
-      <Button onClick={() => onKeyPairAdd()}>Add</Button>
+      <Button
+        basic
+        color={color} 
+        onClick={() => onKeyPairAdd()}>Add</Button>
     </React.Fragment>
   )
 
